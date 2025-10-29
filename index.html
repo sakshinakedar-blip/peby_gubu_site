@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Peby & Gubu 💖</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500;600&display=swap');
+
+    :root{
+      --bg: #FAF7F3;
+      --card: #FFFDF8;
+      --accent: #E8CFC0;
+      --muted: #000; 
+      --text: #000;
+      --rose: #cf7b6b;
+      --shadow: 0 10px 30px rgba(40,30,24,0.06);
+    }
+
+    *{box-sizing:border-box}
+    html,body{
+      height:100%;
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:'Poppins', system-ui, Segoe UI, Arial;
+      -webkit-font-smoothing:antialiased;
+    }
+    .container{max-width:980px;margin:28px auto;padding:18px;}
+
+    header{display:flex;align-items:center;gap:18px;margin-bottom:18px}
+    .logo{width:68px;height:68px;border-radius:18px;background:linear-gradient(135deg,var(--card),var(--accent));display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);font-weight:700}
+    .brand{flex:1}
+    .brand h1{margin:0;font-size:22px;color:var(--rose);font-family:'Playfair Display',serif;}
+    .brand p{margin:4px 0 0;font-size:13px;color:var(--muted)}
+
+    nav{display:flex;gap:10px}
+    nav button{background:transparent;border:0;padding:10px 14px;border-radius:12px;font-weight:600;color:#444;cursor:pointer}
+    nav button.active{background:var(--card);color:var(--rose);box-shadow:var(--shadow)}
+
+    .card{background:var(--card);border-radius:18px;padding:22px;margin-top:8px;box-shadow:var(--shadow)}
+    h2{margin:0;font-size:24px;font-family:'Playfair Display',serif;color:var(--rose)}
+    .muted{color:var(--muted);margin-top:8px;line-height:1.8;font-size:16px;letter-spacing:0.2px;}
+
+    .row{display:flex;gap:16px;align-items:center;margin-top:14px}
+    .imgbox{flex:1;overflow:hidden;border-radius:12px}
+    .imgbox img{width:100%;height:auto;object-fit:contain;display:block}
+    .textbox{flex:1;padding:8px 12px;color:var(--muted)}
+
+    section{display:none}
+    section.active{display:block;animation:fadeIn .6s ease both}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+    footer{margin-top:28px;text-align:center;color:var(--muted);font-size:13px;font-weight:500}
+
+    #confetti{position:fixed;left:0;top:0;width:100%;height:100%;pointer-events:none}
+
+    #playHint{position:fixed;left:14px;bottom:14px;background:var(--card);border-radius:999px;padding:8px 12px;box-shadow:var(--shadow);display:none;align-items:center;gap:8px;cursor:pointer;font-weight:600}
+    #playHint span.emoji{font-size:16px}
+    #playHint small{color:var(--muted);font-size:12px}
+
+    @media (max-width:720px){
+      .row{flex-direction:column}
+      .imgbox img{height:auto}
+    }
+    /* --- MEMORIES SECTION (Heart-shaped photos) --- */
+.memory-collage {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.photo-frame {
+  text-align: center;
+}
+
+.photo-frame img {
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  clip-path: polygon(
+    50% 15%, 
+    61% 7%, 
+    75% 5%, 
+    87% 12%, 
+    92% 25%, 
+    90% 38%, 
+    50% 85%, 
+    10% 38%, 
+    8% 25%, 
+    13% 12%, 
+    25% 5%, 
+    39% 7%
+  );
+  border: 5px solid #f7bfc8;
+  box-shadow: 0 8px 18px rgba(255, 182, 193, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo-frame img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 20px rgba(255, 182, 193, 0.5);
+}
+
+.photo-frame img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(255, 105, 180, 0.5);
+}
+
+.photo-frame p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--rose);
+  font-weight: 500;
+}
+
+  </style>
+</head>
+<body>
+  <canvas id="confetti"></canvas>
+
+  <div class="container">
+    <header>
+      <div class="logo">💖</div>
+      <div class="brand">
+        <h1>Peby & Gubu</h1>
+        <p>A tiny site made with love by Gubu 💋</p>
+      </div>
+      <nav>
+        <button class="navbtn active" data-target="home">Home</button>
+        <button class="navbtn" data-target="how">How We Met</button>
+        <button class="navbtn" data-target="memories">Memories</button>
+        <button class="navbtn" data-target="why">Why I Love You</button>
+        <button class="navbtn" data-target="gift">Gift</button>
+        <button class="navbtn" data-target="muah">Muah 💋</button>
+
+      </nav>
+    </header>
+
+    <!-- HOME -->
+    <section id="home" class="card active">
+      <h2>Happy Birthday, My Peby ❤️</h2>
+      <p class="muted">Every heartbeat of mine whispers your name, every little memory makes me smile. This is my tiny piece of love wrapped for you, my gubu. Tap the gift, and let blessings, hugs, and sparkles fall your way 🎁✨</p>
+
+      <div class="row">
+        <div style="min-width:140px">
+          <button id="openGift" class="btn" style="background:var(--accent);border:none;padding:10px 14px;border-radius:12px;cursor:pointer">Open gift 🎁</button>
+        </div>
+
+        <div class="imgbox">
+          <img src="photo1.jpg" alt="photo1">
+        </div>
+
+        <div class="textbox">
+          <p class="muted">This picture reminds me of how it all began, your shy smile, my clumsy words, and that feeling that maybe, just maybe, this is forever.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW WE MET -->
+    <section id="how" class="card">
+      <h2>How We Met 💞</h2>
+      <p class="muted" style="margin-top:12px;">
+        We started as classmates who never imagined that one day our hearts would speak the same language. One rainy night changed everything when we had our first deep converstaion the rain outside danced, but it was the rhythm between our hearts that truly began and the day when your hand brushed mine, and that single moment felt like time paused.  
+        Our late night talks, shy smiles, and playful fights became stories only we could understand. We argue, we get jealous, we get lost but somehow, our hearts always find their way back home. Because love like ours isn’t fragile, it’s real, and forever 🌧️💗
+      </p>
+    </section>
+
+    <!-- MEMORIES -->
+    <section id="memories" class="card">
+  <h2>Our Memories 📸</h2>
+  <p class="muted">These are not just photos they’re frozen moments of laughter, warmth, and love.</p>
+
+  <div class="memory-collage" style="margin-top:16px;">
+
+    <div class="photo-frame">
+      <img src="photo2.jpg" alt="Memory 2">
+      <p>That candid smile 💫</p>
+    </div>
+
+    <div class="photo-frame">
+      <img src="photo3.jpg" alt="Memory 3">
+      <p>Our cozy moment 🌿</p>
+    </div>
+
+    <div class="photo-frame">
+      <img src="photo4.jpg" alt="Memory 4">
+      <p>That dreamy night ✨</p>
+    </div>
+  </div>
+</section>
+
+    <!-- WHY I LOVE YOU -->
+    <section id="why" class="card">
+      <h2>Why I Love You 💋</h2>
+      <p class="muted" style="margin-top:12px;text-align:left">
+        I love the way you hug me, tight enough to make me feel safe, gentle enough to melt every storm inside me.  
+        I love the way you kiss my forehead, the silent promise that everything will always be okay.  
+        I love your eyes, your laughter, and the way your arms always find me like I’m home.  
+        <br><br>
+        You bring peace to my chaos, warmth to my coldest days. You look at me like I’m something rare, like I’m the story you’ll never stop reading.  
+        You are my calm, my chaos, my heart’s favorite place. You are my forever.  🫶🏻
+          IDONTKNOW WHY I LOVE YOU BUTTTT I LOVEEE YOUUUU 
+      </p>
+    </section>
+
+    <!-- GIFT -->
+    <section id="gift" class="card">
+      <h2>Happy Birthday, My Forever 🕊️</h2>
+      <p class="muted" style="margin-top:12px;text-align:left;white-space:pre-wrap">
+HAPPYYY BIRTHDAYYY LOVE❤♡
+
+Hello my pebyyyy, Happiest birthday love, the one who makes my world softer and my heart fuller. I wish you get everything you've ever dreamed of and may life shower you with endless happiness and peace babyy✨.  
+I still remember the first time your hand held mine, that small, magical moment when everything around me suddenly felt right.  
+Who knew that the same hands I once held would someday hold me for a lifetime 🤝  
+Tumhari baahon mein ek aisa sukoon hai jaise ek ghar ho, jaha sab kuch theek lagta hai, jaha duniya ke sab shor chup ho jaate hain 🫂  
+
+I don’t even know how to explain how special you are, not just to me, but to a few lucky souls who truly know you.  
+The way you chase your dreams, the way you work towards your goals, it’s inspiring. Honestly mai bhi thoda thoda 🤏seekti hu tumse zada naiii bas ittu ittu 🤏🤏sa. 
+Dimak toh nai he vaise maanti hu chalo ab tum bhi maanlo 😭 butttt dil bharrrrr ke he!  
+jis tarah tum cheezo ka dhyan rakte ho jis tarah apno ka khayal karte ho its so admiring babyyyy and that is exactly what I adore the most about you, my sweetupuchgutuch 💋  
+
+From that rainy night🫧 when our first conversation began, till this very moment, every drop of rain still reminds me of you.  
+Tumari wo pyari ankhe aur wo khubsurat si muskaan muje khudse jod deti he yarrrrr😩  
+Always remember, chahe duniya kahin bhi le jaaye, mai tumhare dil mein rahungi har khushi, har ghum, har pal mein.  
+I wish tumhe duniya ki har ek khushi mile, aur tum apna manzil hasil karo wo sab kuch pao jo tum zindagi se chahte ho peby ❤
+You’re not my love at first sight, you’re my love after every sight, after every heartbeat, after every smile 💗 
+
+
+Iloveyouendlessly 𓍯𓂃, my bimbooo♥  
+Once again, happiest birthday to the one who feels like home. I won’t add a full stop to this wish or love because it’s not over its always there for this life and other life line toooo💋
+
+      </p>
+      <p class="muted" style="margin-top:10px">— <strong>gubu(nagavalli)</strong></p>
+    </section>
+<!-- MUAH -->
+<section id="muah" class="card">
+  <h2>Muah 💋</h2>
+  <p class="muted" style="margin-top:12px;text-align:left">
+    Hehehe caught you clicking again 😚<br><br>
+    Choose wisely, my pyara bimbooo 😏👇
+  </p>
+
+  <div style="margin-top:25px;display:flex;flex-direction:column;align-items:center;gap:15px;">
+    <button id="loveBtn1" 
+      style="background:var(--accent);border:none;padding:10px 18px;border-radius:14px;cursor:pointer;font-weight:600;">
+      I love you more 💞
+    </button>
+
+    <button id="loveBtn2"
+      style="background:var(--accent);border:none;padding:10px 18px;border-radius:14px;cursor:pointer;font-weight:600;">
+      I love you more and more hehehe 💋
+    </button>
+  </div>
+
+  <div id="giftDiv" style="display:none;margin-top:30px;text-align:center;">
+    <button id="muahGift"
+      style="background:var(--accent);border:none;padding:10px 18px;border-radius:14px;cursor:pointer;font-weight:600;animation:shake 1.3s infinite ease-in-out;">
+      Open this cute gift 🎁
+    </button>
+  </div>
+
+  <div id="muahPopup"
+       style="display:none;margin-top:22px;text-align:center;background:var(--card);padding:16px;border-radius:18px;box-shadow:var(--shadow)">
+    <p style="font-size:18px;color:var(--rose);font-weight:600;">
+      Nooooo 😭 I love you moreeee n moreeee n moreeee 💞💞💞
+    </p>
+  </div>
+</section>
+
+<style>
+@keyframes shake {
+  0%,100%{transform:rotate(0deg)}
+  25%{transform:rotate(3deg)}
+  50%{transform:rotate(-3deg)}
+  75%{transform:rotate(2deg)}
+}
+</style>
+
+
+    <footer>Made with lots of love by gubu 💋</footer>
+  </div>
+
+  <audio id="bgAudio" src="https://files.catbox.moe/aqibtb" loop preload="auto"></audio>
+  <div id="playHint" role="button" aria-label="Play music" title="Tap to play music"><span class="emoji">🎵</span> <small>Tap to play music</small></div>
+
+  <script>
+    document.querySelectorAll('.navbtn').forEach(b=>{
+      b.addEventListener('click', e=>{
+        document.querySelectorAll('.navbtn').forEach(x=>x.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+        const target = e.currentTarget.dataset.target;
+        document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+        document.getElementById(target).classList.add('active');
+        window.scrollTo({top:0,behavior:'smooth'});
+      });
+    });
+
+    document.getElementById('openGift').addEventListener('click', ()=>{
+      burstConfetti();
+    });
+
+    const c=document.createElement('canvas');
+    c.id='confetti';document.body.appendChild(c);
+    const ctx=c.getContext('2d');let W,H;
+    function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
+    resize();window.addEventListener('resize',resize);
+    function burstConfetti(){
+      const pieces=[];
+      for(let i=0;i<90;i++){
+        pieces.push({x:W/2,y:H/3,vx:(Math.random()-0.5)*8,vy:(Math.random()*-7)-2,r:Math.random()*6+3,color:['#F4C4C4','#F7E6D0','#E8CFC0','#D7BFAF'][Math.floor(Math.random()*4)],life:Math.random()*60+40});
+      }
+      let t=0;
+      const id=setInterval(()=>{
+        t++;ctx.clearRect(0,0,W,H);
+        for(let p of pieces){p.x+=p.vx;p.y+=p.vy;p.vy+=0.25;p.life--;ctx.fillStyle=p.color;ctx.beginPath();ctx.ellipse(p.x,p.y,p.r,p.r*0.7,0,0,Math.PI*2);ctx.fill();}
+        if(t>140){clearInterval(id);ctx.clearRect(0,0,W,H);}
+      },16);
+    }
+
+    const audio=document.getElementById('bgAudio');
+    const playHint=document.getElementById('playHint');
+    audio.volume=0.55;
+    function tryPlay(){audio.play().then(()=>{playHint.style.display='none';}).catch(()=>{playHint.style.display='flex';});}
+    window.addEventListener('load',()=>{setTimeout(tryPlay,300);});
+    playHint.addEventListener('click',()=>{audio.play();playHint.style.display='none';});
+// --- MUAH PAGE INTERACTIONS ---
+const loveBtn1 = document.getElementById('loveBtn1');
+const loveBtn2 = document.getElementById('loveBtn2');
+const giftDiv = document.getElementById('giftDiv');
+const giftBtn = document.getElementById('muahGift');
+const popup = document.getElementById('muahPopup');
+
+if(loveBtn1 && loveBtn2){
+  loveBtn1.addEventListener('click', ()=>{
+    giftDiv.style.display = 'block';
+    burstConfetti();
+  });
+
+  loveBtn2.addEventListener('click', ()=>{
+    giftDiv.style.display = 'block';
+    burstConfetti();
+  });
+}
+
+if(giftBtn){
+  giftBtn.addEventListener('click', ()=>{
+    popup.style.display = 'block';
+    burstConfetti();
+  });
+}
+
+  </script>
+</body>
+</html>
